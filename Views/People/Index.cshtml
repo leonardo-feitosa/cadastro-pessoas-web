@@ -1,0 +1,38 @@
+﻿@model IReadOnlyList<CadastroPessoasWeb.Models.Person>
+    @{
+    ViewData["Title"] = "Pessoas";
+    }
+
+    <h2>Pessoas</h2>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Cadastrar nova</a>
+    </p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Sexo</th>
+                <th style="width:260px;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Age</td>
+                <td>@p.Sex</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@p.Id">Detalhes</a> |
+                    <a asp-action="Edit" asp-route-id="@p.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@p.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
